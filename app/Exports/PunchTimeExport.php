@@ -21,7 +21,12 @@ class PunchTimeExport implements WithMultipleSheets
     {
         $sheets = [];
 
-        $users = User::all();
+        if(auth()->user()->isAdmin())
+        {
+            $users = User::all();
+        }else{
+            $users = User::where('id', auth()->user()->id)->get();
+        }
 
         $sheets = $users->map(function ($user) {
             return new UserPunchTimeSheet($user, $this->preMonth);

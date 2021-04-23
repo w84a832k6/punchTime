@@ -244,7 +244,7 @@ export default {
     nowTime() {
       if (this.punchTimeRecord.length > 0 && this.punchTimeRecord[0].off_time === null) {
         let now = new Date();
-        let on_time = new Date(this.punchTime[0].on_time);
+        let on_time = new Date(this.punchTimeRecord[0].on_time);
 
         let days = parseInt(Math.abs(now - on_time) / 1000 / 60 / 60 / 24);
         let hours =
